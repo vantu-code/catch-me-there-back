@@ -18,8 +18,20 @@ router.get('/events', (req, res, next) => {
         res.status(200).json(result)
         return result
     }).catch((err) => {
-        
     });
   });
+
+  router.post('/events', (req,res, next)=>{
+    console.log("req back end", req.body);
+    Event.create(req.body)
+    .then((result) => {
+        res.json(result)
+        console.log("result", result)
+    }).catch((err) => {
+        console.log(err)
+    });
+    Event.create({
+    })
+  })
 
 module.exports = router;

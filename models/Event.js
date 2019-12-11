@@ -17,11 +17,6 @@ const eventSchema = new Schema({
     concertId: String,
     city: String,
     country: String
-// }, {
-//   timestamps: {
-//     createdAt: 'created_at',
-//     updatedAt: 'updated_at'
-//   },
 });
 
 const Event = mongoose.model('Event', eventSchema);
