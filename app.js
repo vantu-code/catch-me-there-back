@@ -11,7 +11,7 @@ require('dotenv').config();
 
 const auth = require('./routes/auth');
 const index = require('./routes/index')
-
+const spotify = require('./routes/spotify')
 
 // MONGOOSE CONNECTION
 mongoose
@@ -26,6 +26,14 @@ mongoose
 
 // EXPRESS SERVER INSTANCE
 const app = express();
+
+///////////////////////spotify
+
+
+
+  app.listen(8888, () => console.log("My Spotify project running on port 8888 🎧 🥁 🎸 🔊"));
+///////////////
+
 
 
 // CORS MIDDLEWARE SETUP
@@ -69,7 +77,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTER MIDDLEWARE
 app.use('/auth', auth);
+app.use('/spotify', spotify);
 app.use('/events', index);
+
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
