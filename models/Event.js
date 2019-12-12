@@ -8,6 +8,8 @@ const eventSchema = new Schema({
     vibe: String,
     maxPeople: Number,
     coming: Number, 
+    comingIds: [],
+    organizerId: String,
     location: String, 
     date: String, // required 
     hour: String, // required 
