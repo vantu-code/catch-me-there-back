@@ -15,6 +15,7 @@ const eventSchema = new Schema({
     photo: String, // (link) 
     themeSong: String, // (link) 
     concertId: String,
+    relatedConcert: {},
     city: String,
     country: String
 });

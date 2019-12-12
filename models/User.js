@@ -5,8 +5,8 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  // attending: {type: Schema.Types.ObjectId, ref:'Event'},
-  // organizing: {type: Schema.Types.ObjectId, ref:'Event'},
+  attending: [{type: Schema.Types.ObjectId, ref:'Event'}],
+  organizing: [{type: Schema.Types.ObjectId, ref:'Event'}],
   whatsAppNumber: Number,
   photo: String
 }, {

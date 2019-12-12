@@ -69,7 +69,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTER MIDDLEWARE
 app.use('/auth', auth);
-app.use('/', index);
+app.use('/events', index);
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
