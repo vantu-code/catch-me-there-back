@@ -12,6 +12,7 @@ require('dotenv').config();
 const auth = require('./routes/auth');
 const index = require('./routes/index')
 const spotify = require('./routes/spotify')
+const painting = require('./routes/painting')
 
 // MONGOOSE CONNECTION
 mongoose
@@ -79,6 +80,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth', auth);
 app.use('/spotify', spotify);
 app.use('/events', index);
+app.use('/painting', painting);
 
 
 // ERROR HANDLING

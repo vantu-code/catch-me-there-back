@@ -4,6 +4,7 @@ const createError = require('http-errors');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const User = require('../models/User');
+const parser = require("./../config/cloudinary");
 
 // HELPER FUNCTIONS
 const {
@@ -21,10 +22,12 @@ router.get('/me', isLoggedIn, (req, res, next) => {
 //  POST    '/signup'
 router.post(
   '/signup',
+  parser.single('photo'),
   isNotLoggedIn,
   validationLoggin,
   async (req, res, next) => {
-    const { username, password } = req.body;
+    console.log("authhhhhhhhh", req.body)
+    const { username, password, photo } = req.body;
 
     try {
       // projection
@@ -34,7 +37,7 @@ router.post(
       else {
         const salt = bcrypt.genSaltSync(saltRounds);
         const hashPass = bcrypt.hashSync(password, salt);
-        const newUser = await User.create({ username, password: hashPass });
+        const newUser = await User.create({ username, password: hashPass, photo: photo });
         req.session.currentUser = newUser;
         res
           .status(200) //  OK
