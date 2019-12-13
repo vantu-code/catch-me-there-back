@@ -28,6 +28,7 @@ router.post(
   async (req, res, next) => {
     console.log("authhhhhhhhh", req.body)
     const { username, password, photo } = req.body;
+    // const {photo} 
 
     try {
       // projection

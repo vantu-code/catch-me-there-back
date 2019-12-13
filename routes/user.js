@@ -22,7 +22,6 @@ const Event = require('../models/Event');
 //show someone's profile
 router.get('profile/:userId', (req,res, next)=>{
     const {userId} = req.params
-
     User.findById(userId)
     .then((result) => {
         res.status(200).json(result)
