@@ -22,13 +22,12 @@ router.get('/me', isLoggedIn, (req, res, next) => {
 //  POST    '/signup'
 router.post(
   '/signup',
-  parser.single('photo'),
   isNotLoggedIn,
   validationLoggin,
   async (req, res, next) => {
     console.log("authhhhhhhhh", req.body)
-    const { username, password, photo } = req.body;
-    // const {photo} 
+    const { username, password, photo} = req.body;
+    // const {photo} = req
 
     try {
       // projection
