@@ -13,6 +13,7 @@ const auth = require('./routes/auth');
 const index = require('./routes/index')
 const spotify = require('./routes/spotify')
 const painting = require('./routes/painting')
+const user = require('./routes/user')
 
 // MONGOOSE CONNECTION
 mongoose
@@ -81,7 +82,7 @@ app.use('/auth', auth);
 app.use('/spotify', spotify);
 app.use('/events', index);
 app.use('/painting', painting);
-app.use('/user', painting);
+app.use('/user', user);
 
 
 // ERROR HANDLING
