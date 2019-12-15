@@ -5,6 +5,9 @@ const createError = require('http-errors');
 const User = require('../models/User');
 const Event = require('../models/Event');
 
+///////// => /user/
+
+
 //get all users
 router.get('/', (req,res, next)=>{
 User.find()
@@ -18,17 +21,34 @@ User.find()
 
 
 //edit joined to event
-  router.put('/:userId', (req,res, next)=>{
-    const {organizing, attending} = req.params
-    User.put(organizing, attending)
-    .then((result) => {
-        res.json(result)
+  router.put('/:eventId', (req,res, next)=>{
+      const userId = req.session.currentUser._id
+      const {eventId} = req.params
+    //   console.log("user after joining:, ", req.params)
+      User.findByIdAndUpdate(userId, {$addToSet:{attending: eventId}})
+      .then((result) => {
+          res.json(result)
+        console.log("user after joining:, ", result)
     }).catch((err) => {
         console.log(err)
     });
     Event.create({
     })
 
+})
+
+router.put('/leave/:eventId', (req,res, next)=>{
+    const userId = req.session.currentUser._id
+    const {eventId} = req.params
+    User.findByIdAndUpdate(userId, {$pull:{attending: eventId}})
+    .then((result) => {
+        res.json(result)
+        console.log("user after leaving:, ", result)
+    }).catch((err) => {
+        console.log(err)
+    });
+    Event.create({
+    })
 })
 
 //show someone's profile

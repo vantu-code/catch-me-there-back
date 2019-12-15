@@ -40,7 +40,7 @@ router.get('/', (req, res, next) => {
  router.delete('/delete/:eventId', (req, res, next)=>{
      console.log("delete")
     const {eventId} = req.params
-    Event.findByIdAndDelete(eventId)
+    Event.findByIdAndRemove(eventId)
     .then((result) => {
         res.status(200).json(result)
     }).catch((err) => {
