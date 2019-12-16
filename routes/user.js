@@ -12,7 +12,7 @@ const Event = require('../models/Event');
 router.get('/', (req,res, next)=>{
 User.find()
 .then((result) => {
-    console.log("resulty", result)
+    // console.log("resulty", result)
     res,json(result)
 }).catch((err) => {
     console.log(err)
@@ -24,11 +24,11 @@ User.find()
   router.put('/:eventId', (req,res, next)=>{
       const userId = req.session.currentUser._id
       const {eventId} = req.params
-    //   console.log("user after joining:, ", req.params)
-      User.findByIdAndUpdate(userId, {$addToSet:{attending: eventId}})
+    //   console.log("useryio after joining:, ", req.params, " idddd", userId)
+      User.findByIdAndUpdate(userId, {$addToSet:{attending: eventId}}, { new: true })
       .then((result) => {
           res.json(result)
-        console.log("user after joining:, ", result)
+        // console.log("user after joining:, ", result)
     }).catch((err) => {
         console.log(err)
     });
@@ -40,15 +40,13 @@ User.find()
 router.put('/leave/:eventId', (req,res, next)=>{
     const userId = req.session.currentUser._id
     const {eventId} = req.params
-    User.findByIdAndUpdate(userId, {$pull:{attending: eventId}})
+    User.findByIdAndUpdate(userId, {$pull:{attending: eventId}}, { new: true })
     .then((result) => {
         res.json(result)
-        console.log("user after leaving:, ", result)
+        // console.log("user after leaving:, ", result)
     }).catch((err) => {
         console.log(err)
     });
-    Event.create({
-    })
 })
 
 //show someone's profile

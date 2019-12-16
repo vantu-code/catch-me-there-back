@@ -5,8 +5,8 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  attending: [{type: Schema.Types.ObjectId, ref:'Event'}],
-  organizing: [{type: Schema.Types.ObjectId, ref:'Event'}],
+  attending: [],
+  organizing: [],
   whatsAppNumber: Number,
   photo: String
 }, {
@@ -20,3 +20,5 @@ const User = mongoose.model('User', userSchema);
 
 module.exports = User;
 //{type: String, required: true}
+// {type: Schema.Types.ObjectId, ref:'Event'}
+// [{type: Schema.Types.ObjectId, ref:'Event'}]
