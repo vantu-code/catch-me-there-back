@@ -12,7 +12,7 @@ require('dotenv').config();
 const auth = require('./routes/auth');
 const index = require('./routes/index')
 const spotify = require('./routes/spotify')
-// const painting = require('./routes/painting')
+const painting = require('./routes/painting')
 const user = require('./routes/user')
 
 console.log("DIRNAME", __dirname);
@@ -84,7 +84,7 @@ app.use(express.static(path.join(__dirname, 'public2')));
 app.use('/auth', auth);
 app.use('/spotify', spotify);
 app.use('/events', index);
-// app.use('/painting', painting);
+app.use('/painting', painting);
 app.use('/user', user);
 
 

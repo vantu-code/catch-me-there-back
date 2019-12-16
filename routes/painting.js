@@ -10,7 +10,7 @@ const Event = require('../models/Event');
 // })
 
 const multer = require("multer");
-const upload = multer({ dest: "./../public2/images/uploads/" });
+// const upload = multer({ dest: "./../public2/images/uploads/" });
 const parser = require("./../config/cloudinary");
 
 // router.post("/", upload.single("photo"), function(req, res, next) {
