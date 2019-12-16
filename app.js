@@ -15,6 +15,9 @@ const spotify = require('./routes/spotify')
 const painting = require('./routes/painting')
 const user = require('./routes/user')
 
+console.log("DIRNAME", __dirname);
+
+
 // MONGOOSE CONNECTION
 mongoose
   .connect(process.env.MONGODB_URI, {
