@@ -42,7 +42,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.PUBLIC_DOMAIN],
+    origin: [process.env.PUBLIC_DOMAIN, "https://catch-me-there.herokuapp.com"],
   }),
 );
 // app.use((req, res, next) => {
@@ -85,6 +85,13 @@ app.use('/painting', painting);
 app.use('/user', user);
 
 
+// ROUTE FOR SERVING REACT APP (index.html)
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+
 // ERROR HANDLING
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -101,6 +108,5 @@ app.use((err, req, res, next) => {
     res.status(statusError).json(err);
   }
 });
-
 
 module.exports = app;
