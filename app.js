@@ -81,7 +81,7 @@ app.use(cookieParser());
 app.use('/auth', auth);
 app.use('/spotify', spotify);
 app.use('/events', index);
-app.use('/painting', painting);
+//app.use('/painting', painting);
 app.use('/user', user);
 
 
