@@ -74,7 +74,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 
 // ROUTER MIDDLEWARE
@@ -86,10 +86,10 @@ app.use('/user', user);
 
 
 // ROUTE FOR SERVING REACT APP (index.html)
-app.use((req, res, next) => {
-  // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/index.html");
-});
+// app.use((req, res, next) => {
+//   // If no routes match, send them the React HTML.
+//   res.sendFile(__dirname + "/public/index.html");
+// });
 
 
 // ERROR HANDLING
