@@ -20,10 +20,15 @@ router.get('/', (req, res, next) => {
   //delete event
   router.delete('/delete/:eventId', (req, res, next)=>{
       //console.log("delete")
+      const {_id} = req.session.currentUser;
       const {eventId} = req.params
       Event.findByIdAndRemove(eventId)
       .then((result) => {
-          res.status(200).json(result)
+          User.findByIdAndUpdate(_id, { $pull: {organizing: result._id } }, {new: true})
+          .then((updated) => {
+              console.log("updated")
+              res.status(200).json(result)
+          })
         }).catch((err) => {
             console.log(err)
         });
