@@ -32,9 +32,6 @@ User.find()
     }).catch((err) => {
         console.log(err)
     });
-    Event.create({
-    })
-
 })
 
 router.put('/leave/:eventId', (req,res, next)=>{
