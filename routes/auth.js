@@ -26,7 +26,7 @@ router.post(
   validationLoggin,
   async (req, res, next) => {
     console.log("authhhhhhhhh", req.body)
-    const { username, password, photo} = req.body;
+    const { username, password, photo, email, about} = req.body;
     // const {photo} = req
 
     try {
@@ -37,7 +37,7 @@ router.post(
       else {
         const salt = bcrypt.genSaltSync(saltRounds);
         const hashPass = bcrypt.hashSync(password, salt);
-        const newUser = await User.create({ username, password: hashPass, photo: photo });
+        const newUser = await User.create({ username, password: hashPass, photo, email, about });
         req.session.currentUser = newUser;
         res
           .status(200) //  OK

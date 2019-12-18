@@ -8,7 +8,8 @@ const userSchema = new Schema({
   attending: [],
   organizing: [],
   whatsAppNumber: Number,
-  photo: String
+  photo: String,
+  about: String,
 }, {
   timestamps: {
     createdAt: 'created_at',
