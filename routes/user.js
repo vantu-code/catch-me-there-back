@@ -12,7 +12,6 @@ const Event = require('../models/Event');
 router.get('/', (req,res, next)=>{
 User.find()
 .then((result) => {
-    // console.log("resulty", result)
     res,json(result)
 }).catch((err) => {
     console.log(err)
@@ -24,11 +23,9 @@ User.find()
   router.put('/:eventId', (req,res, next)=>{
       const userId = req.session.currentUser._id
       const {eventId} = req.params
-    //   console.log("useryio after joining:, ", req.params, " idddd", userId)
       User.findByIdAndUpdate(userId, {$addToSet:{attending: eventId}}, { new: true })
       .then((result) => {
           res.json(result)
-        // console.log("user after joining:, ", result)
     }).catch((err) => {
         console.log(err)
     });
@@ -40,7 +37,6 @@ router.put('/leave/:eventId', (req,res, next)=>{
     User.findByIdAndUpdate(userId, {$pull:{attending: eventId}}, { new: true })
     .then((result) => {
         res.json(result)
-        // console.log("user after leaving:, ", result)
     }).catch((err) => {
         console.log(err)
     });

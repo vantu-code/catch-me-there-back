@@ -27,62 +27,17 @@ spotifyApi
     const artistId = data.body.artists.items[0].id
     spotifyApi.getArtistTopTracks(artistId, 'GB')
     .then(function(data) {
-
-        // this.albumFunction(artistId)
-    // spotifyApi.getArtistAlbums(artistId)
-    // .then(function(albumData) {        
-    //     //console.log("data", data)
-    //     spotifyApi.getAlbumTracks(albumData.body.items[0].id)
-    //     .then(function(trackData) {
-    //     console.log("tracks", trackData.body.items[0])
-    //     const twoThings = {data, preview: trackData.body.items[0]}
         res.json(data)
-        // }, function(err) {
-        // console.log('Something went wrong!', err);
-        // });
-    //console.log("yap yap", data.body.items[0].id)
     })
     .catch(err => {
     console.log("The error while searching artists occurred: ", err);
     });
-//     }, function(err) {
-//     console.log('Something went wrong!', err);
-//   });
 })
 .catch(err => {
     console.log("The error while searching artists occurred: ", err);
 });
 })
 
-
-/////////////////////////////////////////
-albumFunction=(artistId)=>{
-    // spotifyApi.getArtistAlbums(artistId)
-    // .then(function(data) {        
-    //     //console.log("data", data)
-    //     spotifyApi.getAlbumTracks(data.body.items[0].id)
-    //     .then(function(trackData) {
-    //     console.log("tracks", trackData.body.items[0])
-    //     }, function(err) {
-    //     console.log('Something went wrong!', err);
-    //     });
-    // //console.log("yap yap", data.body.items[0].id)
-    // })
-    // .catch(err => {
-    // console.log("The error while searching artists occurred: ", err);
-    // });
-}
-
-
-// router.get("/tracks/:albumId", (req, res) => {
-//     spotifyApi.getAlbumTracks(req.params.albumId)
-//     .then(function(data) {
-//     res.render('tracks', {tracks: data.body.items})
-//     }, function(err) {
-//     console.log('Something went wrong!', err);
-//     });
-// });
-////////////////////////////////////////////
 
 
 module.exports = router;

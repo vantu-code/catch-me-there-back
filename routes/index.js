@@ -19,7 +19,6 @@ router.get('/', (req, res, next) => {
 
   //delete event
   router.delete('/delete/:eventId', (req, res, next)=>{
-      //console.log("delete")
       const {_id} = req.session.currentUser;
       const {eventId} = req.params
       Event.findByIdAndRemove(eventId)
@@ -57,7 +56,6 @@ router.get('/', (req, res, next) => {
     })
     
     router.get('/:eventId', (req, res, next)=>{
-        //console.log("eventDetail here", req.params.eventId)
         Event.findById(req.params.eventId)
         .then((result) => {
             res.status(200).json(result)
@@ -71,10 +69,9 @@ router.get('/', (req, res, next) => {
       Event.create(req.body)
       .then((result) => {
           res.json(result)
-          //console.log("after creating", result)
       User.findByIdAndUpdate(_id, {$addToSet:{organizing: result._id}}, { new: true })
       .then((updatedUser) => {
-          // console.log("continueeeeeee", updatedUser)
+          res.status(200).json(updatedUser)
       })
       }).catch((err) => {
           console.log(err)
